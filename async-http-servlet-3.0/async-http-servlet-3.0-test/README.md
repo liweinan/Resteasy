@@ -1,1 +1,0 @@
-see ../../arquillian/README.md
