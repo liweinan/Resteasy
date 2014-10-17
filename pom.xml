@@ -7,7 +7,7 @@
     </description>
     <groupId>org.jboss.resteasy</groupId>
     <artifactId>resteasy-jaxrs-all</artifactId>
-    <version>2.3.9.Final</version>
+    <version>2.3.9.Final-redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -104,14 +104,14 @@
         <module>jaxrs-api</module>
         <!--<module>resteasy-test-data</module>-->
         <module>resteasy-jaxrs</module>
-        <!--<module>resteasy-test-tjws</module>-->
-        <!--<module>resteasy-jaxrs-test</module>-->
+        <module>resteasy-test-tjws</module>
+        <module>resteasy-jaxrs-test</module>
         <module>providers</module>
         <!--<module>resteasy-jaxrs-war</module>-->
         <module>resteasy-bom</module>
         <module>resteasy-cache</module>
         <module>resteasy-guice</module>
-        <!--<module>eagledns</module>-->
+        <module>eagledns</module>
         <module>security</module>
         <module>resteasy-links</module>
         <module>async-http-jbossweb</module>
