@@ -43,6 +43,7 @@
 
         <!-- exported -->
         <module name="org.apache.httpcomponents" export="true"/>
+        <module name="org.jboss.logging" export="true"/>
         <module name="org.apache.commons.io"/>
         <module name="org.jboss.resteasy.resteasy-validator-provider-11" services="export" export="true"/>
     </dependencies>
