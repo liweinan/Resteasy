@@ -14,8 +14,10 @@ import javax.ws.rs.core.Response;
 import org.jboss.resteasy.plugins.server.sun.http.HttpContextBuilder;
 import org.jboss.resteasy.test.TestPortProvider;
 import org.jboss.resteasy.test.nextgen.wadl.resources.BasicResource;
+import org.jboss.resteasy.test.nextgen.wadl.resources.ExtendedResource;
 import org.jboss.resteasy.test.nextgen.wadl.resources.issues.RESTEASY1246;
 import org.jboss.resteasy.wadl.ResteasyWadlDefaultResource;
+import org.jboss.resteasy.wadl.ResteasyWadlExtendedResource;
 import org.jboss.resteasy.wadl.ResteasyWadlGenerator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -58,7 +60,9 @@ public class WADLBasicTest extends WADLTestSetup {
         httpServer = HttpServer.create(new InetSocketAddress(TestPortProvider.getPort()), 10);
         contextBuilder = new HttpContextBuilder();
         contextBuilder.getDeployment().getActualResourceClasses().add(BasicResource.class);
+        contextBuilder.getDeployment().getActualResourceClasses().add(ExtendedResource.class);
         contextBuilder.getDeployment().getActualResourceClasses().add(ResteasyWadlDefaultResource.class);
+        contextBuilder.getDeployment().getActualResourceClasses().add(ResteasyWadlExtendedResource.class);
         contextBuilder.getDeployment().getActualResourceClasses().add(RESTEASY1246.class);
         contextBuilder.bind(httpServer);
         ResteasyWadlDefaultResource.getServices().put("/", ResteasyWadlGenerator.generateServiceRegistry(contextBuilder.getDeployment()));
@@ -76,8 +80,10 @@ public class WADLBasicTest extends WADLTestSetup {
     @Before
     public void init() {
         setClient(ClientBuilder.newClient());
-    	setUrl("http://127.0.0.1:${port}/application.xml".replaceAll("\\$\\{port\\}",
-            Integer.valueOf(TestPortProvider.getPort()).toString()));
+        String _url = "http://127.0.0.1:${port}/application.xml"
+                .replaceAll("\\$\\{port\\}", Integer.valueOf(TestPortProvider.getPort()).toString());
+        System.out.println(_url);
+    	setUrl(_url);
     }
     
     @After

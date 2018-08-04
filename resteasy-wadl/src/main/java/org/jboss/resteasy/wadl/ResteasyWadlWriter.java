@@ -51,6 +51,10 @@ public class ResteasyWadlWriter {
             processWadl(entry.getValue(), resources);
         }
 
+        if (ResteasyWadlGrammar.hasGrammars()) {
+            app.setGrammars(ResteasyWadlGrammar.grammars);
+        }
+
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -58,8 +62,8 @@ public class ResteasyWadlWriter {
         return stringWriter;
     }
 
-    private void processWadl(ResteasyWadlServiceRegistry serviceRegistry, Resources root) throws JAXBException {
 
+    private void processWadl(ResteasyWadlServiceRegistry serviceRegistry, Resources root) {
         for (Map.Entry<String, ResteasyWadlResourceMetaData> resourceMetaDataEntry : serviceRegistry.getResources().entrySet()) {
             LogMessages.LOGGER.debug(Messages.MESSAGES.path(resourceMetaDataEntry.getKey()));
             Resource resourceClass = new Resource();
@@ -69,6 +73,9 @@ public class ResteasyWadlWriter {
 
             for (ResteasyWadlMethodMetaData methodMetaData : resourceMetaDataEntry.getValue().getMethodsMetaData()) {
                 Method method = new Method();
+
+                // WADL schema generation.
+                ResteasyWadlGrammar.collectClassesForSchemaGeneration(methodMetaData);
 
                 // First we need to check whether @Path annotation exists in a method.
                 // If the @Path annotation exists, we need to create a resource for it.

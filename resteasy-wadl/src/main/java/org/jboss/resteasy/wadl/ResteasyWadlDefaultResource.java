@@ -29,7 +29,7 @@ public class ResteasyWadlDefaultResource {
         try {
             return this.apiWriter.getStringWriter("", services).toString();
         } catch (JAXBException e) {
-           LogMessages.LOGGER.error(Messages.MESSAGES.cantProcessWadl(), e);
+            LogMessages.LOGGER.error(Messages.MESSAGES.cantProcessWadl(), e);
         }
         return null;
     }
