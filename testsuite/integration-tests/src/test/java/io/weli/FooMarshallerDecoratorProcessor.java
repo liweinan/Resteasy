@@ -1,7 +1,6 @@
 package io.weli;
 
 import org.jboss.resteasy.annotations.DecorateTypes;
-import org.jboss.resteasy.annotations.providers.jaxb.Formatted;
 import org.jboss.resteasy.spi.DecoratorProcessor;
 
 import javax.ws.rs.core.MediaType;
