@@ -2,8 +2,9 @@ package org.jboss.resteasy.links;
 
 import org.jboss.resteasy.annotations.Decorator;
 import org.jboss.resteasy.links.impl.LinkDecorator;
+import org.jboss.resteasy.plugins.providers.jackson.JAXBMarshallerOrJacksonContainer;
 
-import javax.xml.bind.Marshaller;
+//import javax.xml.bind.Marshaller;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,7 +21,7 @@ import java.lang.annotation.Target;
 @Target( { ElementType.TYPE, ElementType.METHOD, ElementType.PARAMETER,
       ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Decorator(processor = LinkDecorator.class, target = Marshaller.class)
+@Decorator(processor = LinkDecorator.class, target = JAXBMarshallerOrJacksonContainer.class)
 @Documented
 public @interface AddLinks {
 }

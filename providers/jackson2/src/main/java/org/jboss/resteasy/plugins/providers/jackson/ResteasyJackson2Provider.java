@@ -51,7 +51,7 @@ import com.fasterxml.jackson.jaxrs.util.ClassKey;
 public class ResteasyJackson2Provider extends JacksonJaxbJsonProvider
 {
 
-   public static DecoratedEntityContainer decorateEntity(Class type, Annotation[] annotations, MediaType mediaType, DecoratedEntityContainer container) {
+   private DecoratedEntityContainer decorateEntity(Class type, Annotation[] annotations, MediaType mediaType, DecoratedEntityContainer container) {
       DecoratorMatcher processor = new DecoratorMatcher();
       return processor.decorate(DecoratedEntityContainer.class, container, type, annotations, mediaType);
    }

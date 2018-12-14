@@ -31,7 +31,7 @@ public class DecoratorMatcher
     * @return decorated target object
     */
    @SuppressWarnings(value = "unchecked")
-   public <T> T decorate(Class<T> targetClass, T target, Class type, Annotation[] annotations, MediaType mediaType)
+   public <T> T decorate(Class<? extends T> targetClass, Object target, Class type, Annotation[] annotations, MediaType mediaType)
    {
       HashMap<Class<?>, Annotation> meta = new HashMap<Class<?>, Annotation>();
       if (type != null)
@@ -43,7 +43,7 @@ public class DecoratorMatcher
       {
          registerDecorators(targetClass, meta, annotations);
       }
-      if (meta.size() == 0) return target;
+      if (meta.size() == 0) return (T) target;
 
       MediaTypeMap<Class<?>> typeMap = new MediaTypeMap<Class<?>>();
       for (Class<?> decoratorAnnotation : meta.keySet())
@@ -82,7 +82,7 @@ public class DecoratorMatcher
          target = (T) processor.decorate(target, annotation, type, annotations, mediaType);
       }
 
-      return target;
+      return (T) target;
    }
 
    private <T> void registerDecorators(Class<T> targetClass, HashMap<Class<?>, Annotation> meta, Annotation[] annotations) {

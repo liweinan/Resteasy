@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import java.lang.annotation.Annotation;
 
+@Deprecated
 public class JsonLinkDecorator implements DecoratorProcessor<DecoratedEntityContainer, AddJsonLinks> {
 
    @Override

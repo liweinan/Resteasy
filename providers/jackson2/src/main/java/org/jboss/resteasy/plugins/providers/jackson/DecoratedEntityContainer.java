@@ -1,6 +1,6 @@
 package org.jboss.resteasy.plugins.providers.jackson;
 
-public class DecoratedEntityContainer {
+public class DecoratedEntityContainer extends JAXBMarshallerOrJacksonContainer {
    public DecoratedEntityContainer(final Object entity) {
       this.entity = entity;
    }
