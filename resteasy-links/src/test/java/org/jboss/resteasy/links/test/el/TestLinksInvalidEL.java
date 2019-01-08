@@ -54,7 +54,6 @@ public class TestLinksInvalidEL
    {
       server.stop();
       server = null;
-      dispatcher = null;
    }
 
    @Parameters
@@ -107,7 +106,6 @@ public class TestLinksInvalidEL
       }
    }
    @Test
-   @Ignore
    public void testELWorksWithoutPackageJSON() throws Exception
    {
       try{
