@@ -137,16 +137,7 @@ class RESTEasyTracingLoggerImpl extends RESTEasyTracing implements RESTEasyTraci
          }
          if (logger.isEnabled(loggingLevel)) {
             logger.log(loggingLevel,
-                    new StringBuilder()
-                            .append(requestId)
-                            .append(' ')
-                            .append(event.name())
-                            .append(' ')
-                            .append(message.toString())
-                            .append(" [")
-                            .append(tracingInfo.formatDuration(duration))
-                            .append(" ms]")
-                            .toString());
+                  requestId + ' ' + event.name() + ' ' + message.toString() + " [" + tracingInfo.formatDuration(duration) + " ms]");
          }
       }
    }
